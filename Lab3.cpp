@@ -32,11 +32,11 @@ int main(int argc,char* argv[]){
 		if(turno){
 			while(x==1){
 				column=input();
-				int validar=6,currColumn;
+				int validar=6,currLine;
 				for(int i=lineas-1;i>=0;i--){
 					if(tablero[i][column]==0){
 						tablero[i][column]=1;
-						currColumn=i;
+						currLine=i;
 						i=0;
 						x=2;
 					}else{
@@ -47,17 +47,106 @@ int main(int argc,char* argv[]){
 				if(validar==0){
 					cout<<"Esa columna esta llena, ingrese una columna diferente"<<endl;
 				}else{
-					/*bool derecha=false,izquiera=false,arriba=false,abajo=false,diag1=false,diag2=false;
+					bool derecha=false,izquierda=false,arriba=false,abajo=false,diag1=false,diag2=false;
 					if((7-column)>=3){
-
-					}*/
-	
-				}	
+						derecha=true;	 
+					}
+					if(column>=3){
+						izquierda=true;
+					}
+					if((6-currLine)>=3){
+						abajo=true;
+					}
+					if(currLine>=3){
+						arriba=true;
+					}
+					if(derecha){	
+						if(tablero[currLine][column]==tablero[currLine][column+1]&&tablero[currLine][column]==tablero[currLine][column+2]&&
+							tablero[currLine][column]==tablero[currLine][column+3]){
+							ganado=true;
+						}
+					}
+					if(izquierda){	
+						if(tablero[currLine][column]==tablero[currLine][column-1]&&tablero[currLine][column]==tablero[currLine][column-2]&&
+							tablero[currLine][column]==tablero[currLine][column-3]){
+							ganado=true;
+						}
+					}
+					if(abajo){	
+						if(tablero[currLine][column]==tablero[currLine+1][column]&&tablero[currLine][column]==tablero[currLine+2][column]&&
+							tablero[currLine][column]==tablero[currLine+3][column]){
+							ganado=true;
+						}
+					}
+					if(arriba){	
+						if(tablero[currLine][column]==tablero[currLine-1][column]&&tablero[currLine][column]==tablero[currLine-2][column]&&
+							tablero[currLine][column]==tablero[currLine-3][column]){
+							ganado=true;
+						}
+					}
+				}
+				x=1;	
 			}
-			
-				
 		}else{
-			
+						
+			while(x==1){
+				column=input();
+				int validar=6,currLine;
+				for(int i=lineas-1;i>=0;i--){
+					if(tablero[i][column]==0){
+						tablero[i][column]=1;
+						currLine=i;
+						i=0;
+						x=2;
+					}else{
+						validar--;
+					}
+				}
+				cout<<validar<<endl;
+				if(validar==0){
+					cout<<"Esa columna esta llena, ingrese una columna diferente"<<endl;
+				}else{
+					bool derecha=false,izquierda=false,arriba=false,abajo=false,diag1=false,diag2=false;
+					if((7-column)>=3){
+						derecha=true;	 
+					}
+					if(column>=3){
+						izquierda=true;
+					}
+					if((6-currLine)>=3){
+						abajo=true;
+					}
+					if(currLine>=3){
+						arriba=true;
+					}
+					if(derecha){	
+						if(tablero[currLine][column]==tablero[currLine][column+1]&&tablero[currLine][column]==tablero[currLine][column+2]&&
+							tablero[currLine][column]==tablero[currLine][column+3]){
+							ganado=true;
+						}
+					}
+					if(izquierda){	
+						if(tablero[currLine][column]==tablero[currLine][column-1]&&tablero[currLine][column]==tablero[currLine][column-2]&&
+							tablero[currLine][column]==tablero[currLine][column-3]){
+							ganado=true;
+						}
+					}
+					if(abajo){	
+						if(tablero[currLine][column]==tablero[currLine+1][column]&&tablero[currLine][column]==tablero[currLine+2][column]&&
+							tablero[currLine][column]==tablero[currLine+3][column]){
+							ganado=true;
+						}
+					}
+					if(arriba){	
+						if(tablero[currLine][column]==tablero[currLine-1][column]&&tablero[currLine][column]==tablero[currLine-2][column]&&
+							tablero[currLine][column]==tablero[currLine-3][column]){
+							ganado=true;
+						}
+					}
+			}	
+		}
+
+
 		}
 		if(turno==1){ turno=2; }else{ turno=1; }
 	}
