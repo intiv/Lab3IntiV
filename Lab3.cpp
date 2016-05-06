@@ -33,15 +33,17 @@ int main(int argc,char* argv[]){
 			while(x==1){
 				column=input();
 				int validar=6,currColumn;
-				for(int i=lineas;i>=0;i--){
+				for(int i=lineas-1;i>=0;i--){
 					if(tablero[i][column]==0){
 						tablero[i][column]=1;
 						currColumn=i;
+						i=0;
 						x=2;
 					}else{
 						validar--;
 					}
 				}
+				cout<<validar<<endl;
 				if(validar==0){
 					cout<<"Esa columna esta llena, ingrese una columna diferente"<<endl;
 				}else{
