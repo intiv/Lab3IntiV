@@ -6,7 +6,6 @@ using std::endl;
 
 
 int input();
-bool Move(int);
 
 int main(int argc,char* argv[]){
 	const int columnas=7;
@@ -44,7 +43,6 @@ int main(int argc,char* argv[]){
 						validar--;
 					}
 				}
-				cout<<validar<<endl;
 				if(validar==0){
 					cout<<"Esa columna esta llena, ingrese una columna diferente"<<endl;
 				}else{
@@ -83,6 +81,21 @@ int main(int argc,char* argv[]){
 						if(tablero[currLine][column]==tablero[currLine-1][column]&&tablero[currLine][column]==tablero[currLine-2][column]&&
 							tablero[currLine][column]==tablero[currLine-3][column]){
 							ganado=true;
+						}
+					}
+					if(!ganado){
+						int plays=0;
+						for(int i=0;i<lineas;i++){
+							for(int j=0;j<columnas;j++){
+								if(tablero[i][j]!=0){
+									plays++;
+								}
+
+							}
+						}
+						if(plays==42){
+							ganado=true;
+							MatrizLlena=true;
 						}
 					}
 				}	
@@ -155,6 +168,7 @@ int main(int argc,char* argv[]){
 						}
 						if(jugadas==42){
 							ganado=true;
+							MatrizLlena=true;
 						}
 					}
 				}
