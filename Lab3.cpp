@@ -4,10 +4,8 @@ using std::cout;
 using std::cin;
 using std::endl;
 
-//bool ganador(int,int,int[][]);
-//void imprimir(int**);
+
 int input();
-//
 bool Move(int);
 
 int main(int argc,char* argv[]){
@@ -30,29 +28,44 @@ int main(int argc,char* argv[]){
 			}
 			cout<<endl;
 		}
-		column=input();
-		
+		int x=1;
 		if(turno){
-			/*while(1){
+			while(x==1){
+				column=input();
+				int validar=6,currColumn;
 				for(int i=lineas;i>=0;i--){
-					for(int j=columnas;j>=0;j--){
-						//if
+					if(tablero[i][column]==0){
+						tablero[i][column]=1;
+						currColumn=i;
+						x=2;
+					}else{
+						validar--;
 					}
+				}
+				if(validar==0){
+					cout<<"Esa columna esta llena, ingrese una columna diferente"<<endl;
+				}else{
+					/*bool derecha=false,izquiera=false,arriba=false,abajo=false,diag1=false,diag2=false;
+					if((7-column)>=3){
+
+					}*/
+	
 				}	
-			}*/
-			//Move(1);
+			}
+			
 				
 		}else{
-			//Move(0);
+			
 		}
+		if(turno==1){ turno=2; }else{ turno=1; }
 	}
 	return 0;
 
 }
 
+
 int input(){
 	int n;
-	cout<<"Ingrese columna:"<<endl;
 	while(1){
 		
 		cout<<"Ingrese columna:"<<endl;
